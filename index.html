@@ -127,6 +127,88 @@
         transition-duration: .01ms !important;
       }
     }
+    
+/* LADAKH CINEMATIC CHAPTER */
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+  display: block;
+}
+
+.scene {
+  margin: 0 auto;
+}
+
+#ladakh {
+  display: none;
+  min-height: 100vh;
+  padding: 90px 24px 55px;
+  text-align: center;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(8, 13, 22, 0.25),
+      rgba(8, 13, 22, 0.75),
+      #090d14
+    ),
+    url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2000&q=85")
+    center / cover no-repeat;
+  color: #fff6ed;
+  animation: mountainReveal 1.4s ease both;
+}
+
+#ladakh .chapter {
+  color: #e4c4a6;
+  font: 11px Arial, sans-serif;
+  letter-spacing: 5px;
+}
+
+#ladakh h2 {
+  max-width: 850px;
+  margin: 24px auto;
+  font-size: clamp(36px, 7vw, 68px);
+  line-height: 1.1;
+  font-weight: normal;
+  text-shadow: 0 4px 25px #000;
+}
+
+#ladakh .mountain-quote {
+  max-width: 650px;
+  margin: 30px auto;
+  color: #fff7ef;
+  font-size: clamp(16px, 2.5vw, 20px);
+  line-height: 1.9;
+}
+
+#ladakh .quote {
+  max-width: 600px;
+  margin: 36px auto;
+  padding: 20px;
+  border-top: 1px solid #ffffff50;
+  border-bottom: 1px solid #ffffff50;
+  color: #e8c5a8;
+  font-size: clamp(20px, 3vw, 27px);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+#ladakh .next-chapter {
+  border: 1px solid #d7b69b;
+  background: #d7b69b;
+  color: #171211;
+}
+
+#ladakh .scroll-note {
+  margin-top: 55px;
+  color: #e0d5cc;
+  font: 11px Arial, sans-serif;
+  letter-spacing: 3px;
+}
+
+@keyframes mountainReveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
   </style>
 </head>
 <body>
@@ -152,9 +234,52 @@
         wonderful adventures, and endless reasons to smile.
       </p>
       <p>With all my love,<br>Prachi ♡</p>
+      <button id="enterStory">Enter Our Story →</button>
       <button id="replay">Replay the Surprise ↺</button>
     </section>
   </main>
+  
+<section id="ladakh">
+  <p class="chapter">CHAPTER 01 · YOUR KIND OF PARADISE</p>
+
+  <h2>Somewhere Between<br>
+  the Mountains and the Sky</h2>
+
+  <p class="mountain-quote">
+    Happy Birthday, my Munchkin! ♡<br><br>
+
+    I know how your eyes light up at distant mountains,
+    beautiful landscapes, and moments waiting to be captured.
+
+    If happiness had a landscape, I imagine it would look
+    a little like Ladakh — wild, peaceful, breathtaking,
+    and impossible to forget.<br><br>
+
+    May your life be full of roads that lead to beautiful
+    places, skies that leave you speechless, and mountains
+    that make you feel alive.<br><br>
+
+    May you always find the freedom to explore, the courage
+    to chase your dreams, and a thousand beautiful reasons
+    to smile.
+  </p>
+
+  <p class="quote">
+    "You were born to chase horizons, collect moments,
+    and turn ordinary seconds into extraordinary memories."
+  </p>
+
+  <p class="mountain-quote">
+    Wherever your dreams take you, Munchkin,
+    may the world always give you something beautiful to capture.
+  </p>
+
+  <button class="next-chapter" id="backToBirthday">
+    Back to My Birthday Wish ♡
+  </button>
+
+  <p class="scroll-note">MADE WITH LOVE · FROM PRACHI</p>
+</section>
 
   <div class="flash" id="flash"></div>
 
@@ -178,6 +303,21 @@
       opening.style.display = "block";
     }
 
+const ladakh = document.getElementById("ladakh");
+const enterStory = document.getElementById("enterStory");
+const backToBirthday = document.getElementById("backToBirthday");
+
+enterStory.addEventListener("click", () => {
+  ladakh.style.display = "block";
+  ladakh.scrollIntoView({ behavior: "smooth" });
+});
+
+backToBirthday.addEventListener("click", () => {
+  ladakh.style.display = "none";
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+    
     shutter.addEventListener("click", openSurprise);
     replay.addEventListener("click", replaySurprise);
   </script>
