@@ -1,0 +1,185 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday, Munchkin ♡</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      background: radial-gradient(ellipse at center, #29252a, #09090b 75%);
+      color: #fff6ed;
+      font-family: Georgia, serif;
+      text-align: center;
+    }
+
+    .scene {
+      width: min(92%, 520px);
+      padding: 30px 16px;
+    }
+
+    .eyebrow {
+      color: #d6b6a5;
+      letter-spacing: 4px;
+      font: 11px Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: clamp(28px, 7vw, 46px);
+      line-height: 1.2;
+      font-weight: normal;
+    }
+
+    .lens {
+      width: 210px;
+      height: 210px;
+      max-width: 65vw;
+      max-height: 65vw;
+      margin: 28px auto;
+      border: 8px solid #75665d;
+      border-radius: 50%;
+      background: radial-gradient(circle, #101116 0 22%, #4d5961 23% 27%, #17191d 29% 48%, #5c514b 50% 53%, #08090c 55%);
+      box-shadow: 0 0 0 5px #201c1b, 0 0 45px #b88c7140, inset 0 0 22px #000;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      transition: transform .7s, box-shadow .7s;
+      color: #fff6ed;
+      font: 12px Arial, sans-serif;
+      letter-spacing: 2px;
+    }
+
+    .lens:hover {
+      transform: scale(1.04);
+      box-shadow: 0 0 0 5px #201c1b, 0 0 65px #d9b49b70;
+    }
+
+    .lens span {
+      background: #09090bc9;
+      padding: 10px;
+      border-radius: 20px;
+    }
+
+    .hint {
+      color: #d2c5bd;
+      font: 13px Arial, sans-serif;
+    }
+
+    #surprise {
+      display: none;
+      animation: reveal 1.5s ease both;
+    }
+
+    #surprise h1 { color: #e8c3a9; }
+
+    #surprise p {
+      line-height: 1.9;
+      color: #f0e3db;
+    }
+
+    button {
+      background: #b58b78;
+      color: #130e0d;
+      border: none;
+      border-radius: 30px;
+      padding: 14px 24px;
+      margin-top: 16px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    button:focus-visible {
+      outline: 2px solid white;
+      outline-offset: 4px;
+    }
+
+    .flash {
+      position: fixed;
+      inset: 0;
+      background: white;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .flash.fire { animation: flash .7s ease-out; }
+
+    @keyframes flash {
+      0% { opacity: 0; }
+      15% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="scene">
+    <div id="opening">
+      <p class="eyebrow">A LITTLE SURPRISE BY PRACHI</p>
+      <h1>Through My Lens,<br>My Munchkin</h1>
+
+      <button class="lens" id="shutter" aria-label="Open your birthday surprise">
+        <span>CLICK TO OPEN</span>
+      </button>
+
+      <p class="hint">Tap the lens to reveal your surprise ♡</p>
+    </div>
+
+    <section id="surprise" aria-live="polite">
+      <p class="eyebrow">21 OCTOBER</p>
+      <h1>Happy Birthday,<br>Munchkin! ♡</h1>
+      <p>
+        To the boy who captures the beauty of the world
+        through his lens — may life capture you in its
+        happiest moments, surrounded by mountains,
+        wonderful adventures, and endless reasons to smile.
+      </p>
+      <p>With all my love,<br>Prachi ♡</p>
+      <button id="replay">Replay the Surprise ↺</button>
+    </section>
+  </main>
+
+  <div class="flash" id="flash"></div>
+
+  <script>
+    const opening = document.getElementById("opening");
+    const surprise = document.getElementById("surprise");
+    const shutter = document.getElementById("shutter");
+    const flash = document.getElementById("flash");
+    const replay = document.getElementById("replay");
+
+    function openSurprise() {
+      opening.style.display = "none";
+      surprise.style.display = "block";
+      flash.classList.remove("fire");
+      void flash.offsetWidth;
+      flash.classList.add("fire");
+    }
+
+    function replaySurprise() {
+      surprise.style.display = "none";
+      opening.style.display = "block";
+    }
+
+    shutter.addEventListener("click", openSurprise);
+    replay.addEventListener("click", replaySurprise);
+  </script>
+</body>
+</html>
