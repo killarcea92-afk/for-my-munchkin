@@ -209,6 +209,84 @@ body {
   from { opacity: 0; }
   to { opacity: 1; }
 }
+ 
+/* OUR LITTLE WORLD - PHOTO GALLERY */
+#memories {
+  display: none;
+  min-height: 100vh;
+  padding: 75px 20px;
+  color: #f9eee7;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at top, #352b32, #111014 70%);
+}
+
+#memories .chapter {
+  color: #d8b49f;
+  font: 11px Arial, sans-serif;
+  letter-spacing: 4px;
+}
+
+#memories h2 {
+  font-size: clamp(34px, 6vw, 54px);
+  font-weight: normal;
+  margin: 22px 0;
+}
+
+.memory-intro,
+.memory-ending {
+  max-width: 620px;
+  margin: 20px auto 35px;
+  line-height: 1.9;
+  color: #e5d5cd;
+}
+
+.memory-grid {
+  max-width: 950px;
+  margin: 35px auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.memory-card {
+  margin: 0;
+  padding: 10px;
+  background: #ffffff0b;
+  border: 1px solid #c6a18b40;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.memory-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 3px;
+}
+
+.memory-card figcaption {
+  padding: 14px 5px 8px;
+  color: #f0d5c5;
+  font: italic 16px Georgia, serif;
+  line-height: 1.6;
+}
+
+@media (max-width: 520px) {
+  .memory-grid {
+    gap: 12px;
+  }
+
+  .memory-card {
+    padding: 6px;
+  }
+
+  .memory-card figcaption {
+    font-size: 13px;
+  }
+}
+
   </style>
 </head>
 <body>
@@ -277,8 +355,61 @@ body {
   <button class="next-chapter" id="backToBirthday">
     Back to My Birthday Wish ♡
   </button>
+  
+<button class="next-chapter" id="enterMemories">
+  Our Little World ♡ →
+</button>
+
 
   <p class="scroll-note">MADE WITH LOVE · FROM PRACHI</p>
+</section>
+
+<section id="memories">
+  <p class="chapter">CHAPTER 02 · MY FAVOURITE MEMORIES</p>
+
+  <h2>Our Little World ♡</h2>
+
+  <p class="memory-intro">
+    Out of all the beautiful things this world has to offer,
+    some of my favourite moments are simply the ones with you.
+  </p>
+
+  <div class="memory-grid">
+    <figure class="memory-card">
+      <img src="memory1.jpg" alt="A favourite memory together">
+      <figcaption>My favourite place is beside you. ♡</figcaption>
+    </figure>
+
+    <figure class="memory-card">
+      <img src="memory2.jpg" alt="A happy moment together">
+      <figcaption>Little moments, endless happiness.</figcaption>
+    </figure>
+
+    <figure class="memory-card">
+      <img src="memory3.jpg" alt="A special day together">
+      <figcaption>Another memory I will always treasure.</figcaption>
+    </figure>
+
+    <figure class="memory-card">
+      <img src="memory4.jpg" alt="A beautiful memory together">
+      <figcaption>If I could, I'd relive this moment.</figcaption>
+    </figure>
+
+    <figure class="memory-card">
+      <img src="memory5.jpg" alt="A moment from our journey">
+      <figcaption>Growing, laughing, and finding our way.</figcaption>
+    </figure>
+
+    <figure class="memory-card">
+      <img src="memory6.jpg" alt="A cherished memory together">
+      <figcaption>To many more memories, Munchkin. ♡</figcaption>
+    </figure>
+  </div>
+
+  <p class="memory-ending">
+    Every photograph holds a moment. Every moment holds a feeling.
+    And some of my happiest feelings will always remind me of you.
+  </p>
 </section>
 
   <div class="flash" id="flash"></div>
@@ -306,6 +437,10 @@ body {
 const ladakh = document.getElementById("ladakh");
 const enterStory = document.getElementById("enterStory");
 const backToBirthday = document.getElementById("backToBirthday");
+    
+const memories = document.getElementById("memories");
+const enterMemories = document.getElementById("enterMemories");
+
 
 enterStory.addEventListener("click", () => {
   ladakh.style.display = "block";
@@ -317,6 +452,11 @@ backToBirthday.addEventListener("click", () => {
   window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
+enterMemories.addEventListener("click", () => {
+  ladakh.style.display = "none";
+  memories.style.display = "block";
+  memories.scrollIntoView({ behavior: "smooth" });
+});
     
     shutter.addEventListener("click", openSurprise);
     replay.addEventListener("click", replaySurprise);
